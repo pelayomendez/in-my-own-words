@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>sounds-like-me — an agent skill that writes in your voice</title>
-<meta name="description" content="An agent skill that drafts, rewrites and audits long-form writing in your voice — learned from your published work, not from a description of it. One command to install.">
+<title>sounds-like-me — AI that writes like you</title>
+<meta name="description" content="Give it a link to your blog. It learns how you actually write, then drafts new pieces, fixes robot-sounding drafts, and tells you when something doesn't sound like you. Free and open source.">
 <link rel="canonical" href="https://pelayomendez.github.io/sounds-like-me/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="sounds-like-me">
-<meta property="og:description" content="Every writer describes their own style the same way: clear, conversational, a bit witty. This reads what you actually published instead.">
+<meta property="og:title" content="sounds-like-me — AI that writes like you">
+<meta property="og:description" content="Because it read your last five articles. Give it a link to your blog and it works out how you actually write.">
 <meta property="og:url" content="https://pelayomendez.github.io/sounds-like-me/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
@@ -21,7 +21,7 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
+    margin:0; background:var(--paper); color:var(--ink); overflow-x:hidden;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
     font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
   }
@@ -32,7 +32,6 @@
   em.hl{font-family:Georgia,"Times New Roman",serif;font-style:italic;color:var(--accent)}
   a{color:inherit}
 
-  /* nav */
   nav{position:sticky;top:0;z-index:20;background:rgba(244,241,236,.88);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;gap:26px;height:58px}
@@ -41,21 +40,23 @@
   nav .links{display:flex;gap:22px;margin-left:auto;align-items:center}
   nav .links a{font-size:14px;color:var(--ink-2);text-decoration:none}
   nav .links a:hover{color:var(--ink)}
-  .btn{display:inline-block;background:var(--ink);color:var(--paper);
-    text-decoration:none;padding:9px 16px;border-radius:2px;font-size:14px;font-weight:500;border:1px solid var(--ink);cursor:pointer}
-  .btn:hover{background:#000}
-  .btn.ghost{background:transparent;color:var(--ink)}
-  .btn.ghost:hover{background:var(--paper-2)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
+    text-decoration:none;padding:11px 20px;border-radius:3px;font-size:15px;font-weight:500;
+    border:1px solid var(--accent);cursor:pointer;line-height:1;white-space:nowrap;
+    transition:background .12s ease,border-color .12s ease}
+  .btn:hover{background:#a5361f;border-color:#a5361f}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--paper-2);border-color:var(--ink-2)}
+  .btn.lg{padding:15px 28px;font-size:16.5px;border-radius:3px}
+  nav .btn{padding:8px 15px;font-size:13.5px}
   @media(max-width:760px){nav .links a:not(.btn){display:none}}
 
-  /* hero */
   header{padding:76px 0 56px;border-bottom:1px solid var(--line)}
-  h1{font-size:clamp(38px,5.6vw,62px);line-height:1.03;letter-spacing:-.033em;
-    margin:16px 0 20px;font-weight:600;max-width:16ch}
-  .sub{font-size:19.5px;color:var(--ink-2);max-width:56ch;margin:0 0 30px}
+  h1{font-size:clamp(36px,5.2vw,58px);line-height:1.05;letter-spacing:-.033em;
+    margin:16px 0 20px;font-weight:600;max-width:17ch}
+  .sub{font-size:19.5px;color:var(--ink-2);max-width:58ch;margin:0 0 30px}
   .hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-  /* code */
   .cmd{display:flex;align-items:center;gap:12px;background:var(--code-bg);
     color:var(--code-ink);border-radius:3px;padding:13px 14px;
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;overflow-x:auto}
@@ -65,19 +66,17 @@
     padding:5px 10px;font-size:11px;cursor:pointer;font-family:inherit;letter-spacing:.05em}
   .copy:hover{background:#3a332d;color:#fff}
 
-  /* sections */
   section{padding:62px 0;border-bottom:1px solid var(--line);scroll-margin-top:58px}
-  h2{font-size:clamp(25px,3.2vw,34px);letter-spacing:-.025em;margin:0 0 10px;font-weight:600;max-width:22ch}
-  .lede{color:var(--ink-2);max-width:62ch;margin:0 0 30px}
+  h2{font-size:clamp(25px,3.2vw,34px);letter-spacing:-.025em;margin:0 0 12px;font-weight:600;max-width:24ch}
+  .lede{color:var(--ink-2);max-width:64ch;margin:0 0 18px}
+  .lede:last-of-type{margin-bottom:30px}
 
-  /* stat strip */
   .stats{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .stats div{flex:1 1 150px;padding:18px 20px;border-right:1px solid var(--line)}
+  .stats div{flex:1 1 160px;padding:18px 20px;border-right:1px solid var(--line)}
   .stats div:last-child{border-right:0}
-  .stats b{display:block;font-family:ui-monospace,monospace;font-size:22px;font-weight:600}
-  .stats small{color:var(--ink-2);font-size:12.5px}
+  .stats b{display:block;font-family:ui-monospace,monospace;font-size:21px;font-weight:600}
+  .stats small{color:var(--ink-2);font-size:12.5px;line-height:1.4;display:block;margin-top:2px}
 
-  /* demo */
   .tabs{display:flex;gap:6px;margin-bottom:-1px;flex-wrap:wrap}
   .tab{border:1px solid var(--line);border-bottom-color:transparent;background:var(--paper-2);
     padding:9px 15px;font-size:13px;cursor:pointer;border-radius:3px 3px 0 0;color:var(--ink-2);
@@ -91,14 +90,13 @@
   mark{background:#f6ddd6;color:#8c2f1b;padding:0 2px;border-radius:2px}
   ins{text-decoration:none;background:#e2ecdf;padding:0 2px;border-radius:2px}
   .maplist{list-style:none;padding:0;margin:0}
-  .maplist li{padding:13px 0;border-top:1px solid var(--line);display:grid;
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+  .maplist li{padding:14px 0;border-top:1px solid var(--line);display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px}
   .maplist li:first-child{border-top:0;padding-top:0}
-  .maplist .t{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--accent)}
+  .maplist .t{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--accent);line-height:1.5}
   .maplist .d{font-size:14.5px;color:var(--ink-2)}
   @media(max-width:700px){.maplist li{grid-template-columns:1fr;gap:6px}}
 
-  /* cards */
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:1px;
     background:var(--line);border:1px solid var(--line)}
   .card{background:var(--paper);padding:24px 22px}
@@ -107,7 +105,17 @@
   .card .k{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px}
 
-  /* steps */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+    border:1px solid var(--line)}
+  .split > div{background:#fff;padding:24px 22px}
+  .split .h{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;display:block;margin-bottom:14px}
+  .split .yes .h{color:#3f7a4a}
+  .split .no .h{color:var(--accent)}
+  .split ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
+  .split li{margin-bottom:7px}
+  @media(max-width:640px){.split{grid-template-columns:1fr}}
+
   .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
   .step{position:relative;padding-top:38px}
   .step:before{counter-increment:s;content:"0" counter(s);position:absolute;top:0;left:0;
@@ -115,16 +123,15 @@
   .step h3{margin:0 0 6px;font-size:16.5px}
   .step p{margin:0 0 12px;font-size:14.5px;color:var(--ink-2)}
 
-  /* closing */
   .final{background:var(--ink);color:var(--paper);border-radius:3px;padding:54px 44px;text-align:center}
-  .final h2{color:var(--paper);margin:0 auto 12px;max-width:20ch}
-  .final p{color:#b3aaa0;max-width:52ch;margin:0 auto 26px}
+  .final h2{color:var(--paper);margin:0 auto 12px;max-width:22ch}
+  .final p{color:#b3aaa0;max-width:54ch;margin:0 auto 26px}
   .final em.hl{color:#f0a08c}
   .final .cmd{background:#241e1a;justify-content:center;max-width:560px;margin:22px auto 0}
   footer{padding:34px 0 60px;font-size:13.5px;color:var(--ink-2);display:flex;
     gap:18px;flex-wrap:wrap;align-items:center}
   footer a{color:var(--ink-2)}
-  .note{font-size:13.5px;color:var(--ink-2);margin-top:14px}
+  .note{font-size:13.5px;color:var(--ink-2);margin-top:14px;max-width:70ch}
   .switch{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
   .sw{border:1px solid var(--line);background:transparent;padding:6px 12px;font-size:12.5px;
     cursor:pointer;border-radius:2px;font-family:ui-monospace,monospace;color:var(--ink-2)}
@@ -139,91 +146,99 @@
   <a class="brand" href="#top">sounds-like-me</a>
   <div class="links">
     <a href="#demo">Demo</a>
-    <a href="#how">How it works</a>
-    <a href="#profile">A real profile</a>
+    <a href="#why">Why</a>
+    <a href="#does">What it does</a>
     <a href="https://github.com/pelayomendez/sounds-like-me">GitHub</a>
     <a class="btn" href="#install">Install</a>
   </div>
 </div></nav>
 
 <header id="top"><div class="wrap">
-  <div class="eyebrow">Agent skill · Writing · v0.2.0 · MIT</div>
-  <h1>Every writer describes their own style <em class="hl">the same way.</em></h1>
-  <p class="sub">Clear. Conversational. A bit witty. It steers nothing, which is why style prompts don't work. This skill reads what you've actually published and records what you demonstrably do — then drafts, rewrites and audits against it.</p>
+  <div class="eyebrow">A skill you install · Free &amp; open source · Claude Code, Cursor, Codex + ~70 more</div>
+  <h1>AI that writes like you, because it read <em class="hl">your last five articles.</em></h1>
+  <p class="sub">Give it a link to your blog. It works out how you actually write — your rhythm, your habits, the words you never use — and then writes new pieces in your voice, fixes drafts that came out sounding like a robot, and tells you when something doesn't sound like you.</p>
+  <p class="sub" style="font-size:17px;margin-bottom:32px">It's a <strong>skill</strong>: a small add-on you install into the AI assistant you already use. One command, no account, and it works the same in Claude Code, Cursor, Codex and about seventy others.</p>
   <div class="hero-cta">
-    <a class="btn" href="#install">Install</a>
-    <a class="btn ghost" href="#demo">See it work</a>
+    <a class="btn lg" href="#install">Install the skill</a>
+    <a class="btn ghost lg" href="#demo">See it work</a>
   </div>
 </div></header>
 
-<div class="stats wrap" style="margin-top:0;border-left:0;border-right:0">
-  <div><b>04</b><small>modes: draft, rewrite, audit, refresh</small></div>
-  <div><b>02</b><small>profile layers, so it crosses languages</small></div>
-  <div><b>15</b><small>audit dimensions, each with quoted evidence</small></div>
-  <div><b>00</b><small>dependencies, no API keys, nothing uploaded</small></div>
-  <div><b>~70</b><small>agents, via the skills spec</small></div>
+<div class="stats wrap" style="border-left:0;border-right:0">
+  <div><b>1</b><small>command to install</small></div>
+  <div><b>3–5</b><small>of your articles is all it needs</small></div>
+  <div><b>2+</b><small>languages, without faking the ones it hasn't read</small></div>
+  <div><b>0</b><small>accounts, keys or uploads — it stays on your computer</small></div>
 </div>
 
 <section id="demo"><div class="wrap">
-  <h2>The same paragraph, twice</h2>
-  <p class="lede">A model was asked to argue that long advertising copy outsells short copy. Then the same request went through a profile built from David Ogilvy's writing. Nothing about the argument changed.</p>
+  <h2>One email. Written twice.</h2>
+  <p class="lede">We asked an AI to write the same thing you've written a hundred times: an email telling your team the launch has slipped. First as it comes out of the box. Then with a profile loaded.</p>
+  <p class="lede">The profile belongs to <strong>David Ogilvy</strong>, who more or less invented modern advertising copy in the 1950s and spent forty years insisting that most business writing is bad on purpose — padded, hedged, and written to protect the writer rather than inform the reader. He's the demo because he's the opposite of how a machine writes by default, so if the profile works at all, you'll see it immediately.</p>
 
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" aria-selected="true" data-p="p1">Before</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p2">After</button>
-    <button class="tab" role="tab" aria-selected="false" data-p="p3">What changed, and why</button>
+    <button class="tab" role="tab" aria-selected="true" data-p="p1">Plain AI</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2">With a profile</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3">Why it changed</button>
   </div>
 
   <div class="panel" id="p1">
-    <span class="tag">Model default</span>
-    <p><mark>In today's fast-paced marketing landscape</mark>, <mark>it's important to note that</mark> long-form copy can be a <mark>game-changer</mark>. Studies have shown that longer advertisements often outperform shorter ones. By <mark>leveraging</mark> detailed, informative content, brands can <mark>unlock</mark> deeper engagement with their audience.</p>
-    <p><mark>Ultimately, the key is finding the right balance</mark> for your specific situation.</p>
+    <span class="tag">Straight out of the box</span>
+    <p><mark>I hope this email finds you well.</mark> I wanted to <mark>reach out and touch base</mark> regarding the Q3 launch timeline. Following recent conversations with <mark>key stakeholders</mark>, <mark>it's important to note that</mark> we will be shifting the delivery date to November 14th.</p>
+    <p>We appreciate your flexibility as we <mark>navigate these changes</mark>, and we remain confident that this adjustment will <mark>ultimately</mark> allow us to deliver a stronger product. <mark>Please don't hesitate to reach out</mark> with any questions.</p>
   </div>
 
   <div class="panel" id="p2" hidden>
-    <span class="tag">Same request, profile applied</span>
-    <p><ins>Long copy sells more than short copy.</ins></p>
-    <p>I have tested this against my own taste and lost. Every time we cut an advertisement down to something a creative director would admire, it sold less.</p>
-    <p>Nobody reads long copy, they told me. The sales figures disagreed.</p>
-    <p><ins>Write the long one.</ins></p>
+    <span class="tag">Same request, with the Ogilvy profile loaded</span>
+    <p><ins>The launch moves to 14 November.</ins></p>
+    <p>That is three weeks late, and it is my fault. I approved a scope in June that two of you told me at the time was too big.</p>
+    <p>Nothing else changes. Same team, same budget, same feature list. We are buying the three weeks, not spending them.</p>
+    <p><ins>If you think 14 November is wrong too, tell me this week. Not in November.</ins></p>
   </div>
 
   <div class="panel" id="p3" hidden>
-    <span class="tag">Traced to the profile</span>
+    <span class="tag">Left: what the profile says about him. Right: what it did.</span>
     <ul class="maplist">
-      <li><span class="t">Assertion first, evidence second, never the reverse.</span><span class="d">The claim is the first sentence. The "before" version buries it behind two clauses of scene-setting.</span></li>
-      <li><span class="t">Confess a failure. This is what buys the authority for everything else.</span><span class="d">"I have tested this against my own taste and lost." No model volunteers this unless the profile says it's a habit.</span></li>
-      <li><span class="t">Attack the fashionable position by name.</span><span class="d">"Nobody reads long copy, they told me."</span></li>
-      <li><span class="t">The imperative close. Never a summary, never a softening.</span><span class="d">"Write the long one." — against the default's hedge that gives the reader both options and commits to neither.</span></li>
-      <li><span class="t">Anti-tells: "leverage", "unlock", "game-changer", "it's important to note", "in today's fast-paced world".</span><span class="d">Five hits in the default, marked in red above. Recording what an author <em>never</em> writes does more work than any positive instruction.</span></li>
+      <li><span class="t">"Assertion first, evidence second, never the reverse."</span><span class="d">The news is the first six words. The plain version buries it in the middle of the second sentence, behind three clauses of warm-up.</span></li>
+      <li><span class="t">"Confess a failure. This is what buys the authority for everything else."</span><span class="d">"It is my fault." No AI volunteers that unless the profile tells it this writer does.</span></li>
+      <li><span class="t">"Specific over general, always. A number, a year, a client. Adjectives are treated as a failure to find a fact."</span><span class="d">"Three weeks late." "A scope I approved in June." The plain version manages zero facts in ninety words.</span></li>
+      <li><span class="t">"The imperative close. Never a summary, never a softening."</span><span class="d">"Tell me this week. Not in November." Against a plain version that ends by inviting questions it clearly doesn't want.</span></li>
+      <li><span class="t">Never writes: "reach out", "stakeholders", "it's important to note", "navigate", "ultimately", "don't hesitate".</span><span class="d">Seven hits in the plain version, marked in red. Knowing what a writer <em>never</em> says turns out to do more work than any instruction about what they do.</span></li>
     </ul>
   </div>
-  <p class="note">Ogilvy is the worked example because his prose is unusually well documented and he has been dead since 1999. Your profile is built from your own corpus, on your machine.</p>
+  <p class="note">A style demonstration, not something Ogilvy wrote — he died in 1999 and never had a Q3 launch. Your profile would be built from your own articles, on your own computer, and the emails would sound like you instead.</p>
 </div></section>
 
-<section id="how"><div class="wrap">
+<section id="why"><div class="wrap">
+  <h2>Why telling an AI to "write like me" never works</h2>
+  <p class="lede">Ask any writer to describe their own style and you get the same three words: clear, conversational, a bit witty. It's what we'd all like to be true. It tells an AI nothing.</p>
+  <p class="lede">So this goes the other way round. Instead of asking what you sound like, it reads what you've published and writes down what you actually do — how long your paragraphs run, how your sentences start, which word you put in italics, how you end a piece. Every single thing it notices comes with a quote from your own writing, so you can look at it and say: no, that's not me, that was one article.</p>
+  <p class="lede">The most useful part turned out to be the opposite list. Knowing that you have never once typed "it's important to note" keeps a draft sounding like you better than any instruction about what to write.</p>
+</div></section>
+
+<section id="does"><div class="wrap">
   <h2>Four things it does</h2>
-  <p class="lede">All four run against the same profile, so an audit and a draft can't disagree about what you sound like.</p>
+  <p class="lede">All four work off the same profile, so what it writes and what it corrects can never contradict each other.</p>
   <div class="cards">
-    <div class="card"><span class="k">Draft</span><h3>From notes to finished piece</h3><p>Give it ideas, an outline or a mess. Your argument order is treated as the spec — reordering it into a more conventional shape is the single most common way this goes wrong, so it doesn't.</p></div>
-    <div class="card"><span class="k">Rewrite</span><h3>Your draft, your voice</h3><p>Same claims, same order, same evidence. It changes the prose and reports what it touched, tied to named traits rather than to taste.</p></div>
-    <div class="card"><span class="k">Audit</span><h3>Where it stops sounding like you</h3><p>Fifteen dimensions, a verdict each, always with the offending sentence quoted. It won't rewrite. Factual claims are enumerated separately as unverified rather than passed or failed.</p></div>
-    <div class="card"><span class="k">Refresh</span><h3>A profile that tracks you</h3><p>Point it at new writing. It extracts only what's new or contradictory, shows you the diff, and logs what it learned. Profiles accumulate; they never get replaced from one source.</p></div>
+    <div class="card"><span class="k">Write</span><h3>From notes to finished piece</h3><p>Give it your ideas, an outline, or a mess of bullet points. It keeps your ideas in the order you gave them — quietly rearranging your argument into something more conventional is the most common way this goes wrong.</p></div>
+    <div class="card"><span class="k">Rewrite</span><h3>Fix a draft that doesn't sound like you</h3><p>Yours, a colleague's, or something an AI produced. Same points, same order, same facts. It changes how it's written and tells you what it touched.</p></div>
+    <div class="card"><span class="k">Check</span><h3>Point at what's off</h3><p>It reads a piece and quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them — that part stays yours.</p></div>
+    <div class="card"><span class="k">Keep up</span><h3>It learns as you keep writing</h3><p>Show it something new you've published. It picks up only what's changed, shows you before saving anything, and keeps a note of what it learned and where from.</p></div>
   </div>
 </div></section>
 
 <section id="profile"><div class="wrap">
   <div class="two">
     <div>
-      <h2>The hard part isn't the mechanics</h2>
-      <p class="lede">It's knowing how specific a profile has to get before it does any work. Most attempts stop at "short sentences, friendly tone" and steer nothing. This is roughly the altitude required — every line traceable to something the author actually wrote.</p>
-      <p class="lede">Which is also why you can argue with it. A profile is a claim about you, with evidence attached, and you get to tell it it's wrong.</p>
-      <a class="btn ghost" href="https://github.com/pelayomendez/sounds-like-me/tree/main/examples/ogilvy">Read the full example →</a>
+      <h2>What it actually learns about you</h2>
+      <p class="lede">Most attempts at this stop at "short sentences, friendly tone", which steers nothing. This is the level of detail it takes before an AI can genuinely sound like someone — and here's a piece of the Ogilvy profile so you can see it.</p>
+      <p class="lede">Because every line comes from something the writer actually wrote, you can argue with it. A profile is a claim about you with the evidence attached.</p>
+      <a class="btn ghost" href="https://github.com/pelayomendez/sounds-like-me/tree/main/examples/ogilvy">Read the whole thing →</a>
     </div>
     <div class="panel" style="border-radius:3px">
-      <span class="tag">examples/ogilvy/core-voice.md</span>
+      <span class="tag">A page from the Ogilvy profile</span>
       <p style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.7;color:var(--ink-2)">
-      <strong style="color:var(--ink)">## Rhythm</strong><br><br>
+      <strong style="color:var(--ink)">Rhythm</strong><br><br>
       Short sentences. Subject, verb, object. Compound sentences are rare and complex ones rarer.<br><br>
       Paragraphs of 40–80 words, three or four sentences, almost never one. But <strong style="color:var(--ink)">the single-sentence paragraph is used as a hammer</strong> — reserved for the line he wants you to remember, roughly once per section, always at the end of a run of evidence.
       </p>
@@ -232,30 +247,36 @@
 </div></section>
 
 <section id="lang"><div class="wrap">
-  <div class="two">
-    <div>
-      <h2>It crosses languages without pretending</h2>
-      <p class="lede">The profile is two layers. <span class="mono">core-voice.md</span> holds what survives translation — shape, rhythm, argument moves, how a piece lands. Almost none of it is vocabulary. <span class="mono">lexicon.&lt;lang&gt;.md</span> holds what doesn't.</p>
-      <p class="lede">Ask for a piece in a language whose lexicon is still empty and it applies the core, derives only what safely follows from an observed habit, and says so on delivery. It will not invent verbal tics in a language it has never seen you write. A fabricated habit is worse than a neutral sentence.</p>
+  <h2>It writes in your other language too — and says when it can't</h2>
+  <p class="lede">Most of what makes your writing yours isn't vocabulary. It's how long you let a paragraph run, how you build up to a point, how you land an ending. That part travels between languages, so it does too.</p>
+  <p class="lede">Your actual words don't travel, so they're kept separately, one set per language. Ask for something in a language it has never seen you write in and it will use the part that travels, then tell you plainly that it's guessing at the rest. It won't invent a habit you don't have.</p>
+  <div class="split">
+    <div class="yes">
+      <span class="h">Travels between languages</span>
+      <ul>
+        <li>How long your paragraphs run</li>
+        <li>How you build an argument</li>
+        <li>Whether you reach for metaphors, and how often</li>
+        <li>How you open, and how you end</li>
+        <li>Whether you argue from evidence or from experience</li>
+      </ul>
     </div>
-    <div>
-      <div class="panel mono" style="font-size:12.5px;line-height:1.9;color:var(--ink-2);border-radius:3px">
-        references/<br>
-        &nbsp;&nbsp;<strong style="color:var(--ink)">core-voice.md</strong> &nbsp;<span style="color:var(--accent)">← survives translation</span><br>
-        &nbsp;&nbsp;lexicon.en.md<br>
-        &nbsp;&nbsp;lexicon.es.md &nbsp;<span style="color:var(--accent)">← words, punctuation, anti-tells</span><br>
-        sources/<br>
-        &nbsp;&nbsp;index.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--accent)">← what taught it what</span><br>
-        &nbsp;&nbsp;raw/<br>
-        config.yaml
-      </div>
+    <div class="no">
+      <span class="h">Doesn't — kept per language</span>
+      <ul>
+        <li>The words and turns of phrase you reach for</li>
+        <li>Punctuation habits</li>
+        <li>How formal or colloquial you are</li>
+        <li>Whether you speak to the reader as "you"</li>
+        <li>The phrases you never use</li>
+      </ul>
     </div>
   </div>
 </div></section>
 
 <section id="install"><div class="wrap">
   <h2>Install</h2>
-  <p class="lede">One command. No API key, no account, no build step. Your writing never leaves your machine.</p>
+  <p class="lede">One command. No account, no API key, nothing to configure. Your writing never leaves your computer.</p>
 
   <div class="switch" id="agents">
     <button class="sw" aria-pressed="true" data-a="claude-code">Claude Code</button>
@@ -268,7 +289,7 @@
     <span class="p">$</span><span id="cmd-global">npx skills@latest add pelayomendez/sounds-like-me -g -a claude-code</span>
     <button class="copy" data-src="cmd-global">Copy</button>
   </div>
-  <p class="note" style="margin-bottom:26px"><span class="mono">-g</span> installs globally, into your agent's user directory. Drop it for this project only.</p>
+  <p class="note" style="margin-bottom:26px">The <span class="mono">-g</span> makes it available everywhere. Drop it to install for one project only.</p>
 
   <h3 style="font-size:16px;margin:0 0 10px">Or as a Claude Code plugin</h3>
   <div class="cmd" style="margin-bottom:26px">
@@ -279,18 +300,18 @@
   <h2 style="font-size:24px;margin-top:44px">Then, three steps</h2>
   <div class="steps" style="margin-top:26px">
     <div class="step">
-      <h3>Point it at your writing</h3>
-      <p>Three to five published pieces, or a feed. Below three you're documenting one article, not a voice.</p>
-      <div class="cmd"><span id="cmd-boot">bootstrap my voice profile from https://your-blog.com/feed</span><button class="copy" data-src="cmd-boot">Copy</button></div>
+      <h3>Show it your writing</h3>
+      <p>A link to your blog, or three to five pieces. Fewer than three and it's describing one article, not you.</p>
+      <div class="cmd"><span id="cmd-boot">learn my writing voice from https://your-blog.com/feed</span><button class="copy" data-src="cmd-boot">Copy</button></div>
     </div>
     <div class="step">
-      <h3>Argue with the profile</h3>
-      <p>It shows you what it found, with quotations, before saving anything. Tell it where it's wrong.</p>
+      <h3>Tell it where it's wrong</h3>
+      <p>It shows you everything it thinks it found before saving any of it.</p>
       <div class="cmd"><span id="cmd-arg">that's not a habit, that was one article</span><button class="copy" data-src="cmd-arg">Copy</button></div>
     </div>
     <div class="step">
       <h3>Write</h3>
-      <p>Draft, rewrite or audit. In any of your languages.</p>
+      <p>A new piece, a fix for an old one, or a second opinion on a draft.</p>
       <div class="cmd"><span id="cmd-use">does this sound like me?</span><button class="copy" data-src="cmd-use">Copy</button></div>
     </div>
   </div>
@@ -299,7 +320,7 @@
 <section style="border-bottom:0"><div class="wrap">
   <div class="final">
     <h2>Stop describing your voice. <em class="hl">Show it the receipts.</em></h2>
-    <p>MIT, no telemetry, nothing uploaded. Fork it, build your own profile, keep the fork private — a voice profile is a fairly complete recipe for impersonating you.</p>
+    <p>Free, open source, and nothing gets uploaded anywhere. If you fork it to keep your own profile backed up, make the fork private — a voice profile is a fairly complete recipe for impersonating you.</p>
     <a class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)" href="https://github.com/pelayomendez/sounds-like-me">View on GitHub</a>
     <div class="cmd"><span class="p">$</span><span id="cmd-final">npx skills@latest add pelayomendez/sounds-like-me -g</span><button class="copy" data-src="cmd-final">Copy</button></div>
   </div>
@@ -312,7 +333,6 @@
 </div></section>
 
 <script>
-  // demo tabs
   document.querySelectorAll('.tab').forEach(function(t){
     t.addEventListener('click', function(){
       document.querySelectorAll('.tab').forEach(function(x){
@@ -324,7 +344,6 @@
     });
   });
 
-  // agent switcher
   document.querySelectorAll('#agents .sw').forEach(function(b){
     b.addEventListener('click', function(){
       document.querySelectorAll('#agents .sw').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
@@ -334,7 +353,6 @@
     });
   });
 
-  // copy buttons
   document.querySelectorAll('.copy').forEach(function(b){
     b.addEventListener('click', function(){
       var text = document.getElementById(b.dataset.src).textContent;
