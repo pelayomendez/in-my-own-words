@@ -1,0 +1,43 @@
+# Who this skill writes as. Everything author-specific lives in this file and
+# in references/ — SKILL.md itself stays generic.
+#
+# This is the unedited template. While `author.name` is still YOUR NAME, the
+# skill will refuse to guess and will run Bootstrap instead: point it at three
+# to five things you have published and say "bootstrap my voice profile".
+#
+# A complete, filled-in example: ../../examples/ogilvy/
+
+author:
+  name: YOUR NAME
+  publication: YOUR PUBLICATION            # optional
+  url: https://example.com
+  feed: https://example.com/feed           # optional; RSS is the best source
+  background: >-
+    One or two sentences on who you are and what you write about. Context for
+    the model, not marketing copy.
+
+languages:
+  primary: en                              # the language most of your corpus is in
+  also: []                                 # add others; each needs its own lexicon
+
+profile:
+  core: references/core-voice.md
+  lexicons:
+    en: references/lexicon.en.md
+
+scope:
+  applies_to:
+    - essay
+    - newsletter
+  does_not_apply_to:
+    - chat replies
+    - commit messages
+    - short operational email
+
+targets:
+  words: [800, 1500]
+  offer_title: false
+  sign_off: false
+
+coexists_with: []                          # name any always-on style guidance
+                                           # you already run, and the boundary

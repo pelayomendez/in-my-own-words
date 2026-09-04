@@ -1,0 +1,26 @@
+{
+  "name": "pelayomendez",
+  "owner": {
+    "name": "Pelayo Méndez",
+    "url": "https://github.com/pelayomendez"
+  },
+  "description": "A forkable skill that writes long-form in your own voice, from a profile built out of your own published work.",
+  "plugins": [
+    {
+      "name": "sounds-like-me",
+      "source": "./",
+      "description": "Draft, rewrite or audit essays, newsletters and talks so they sound like you — not like a model doing its best impression of a blog.",
+      "category": "writing",
+      "keywords": [
+        "writing",
+        "voice",
+        "style",
+        "long-form",
+        "substack"
+      ],
+      "skills": [
+        "./skills/sounds-like-me"
+      ]
+    }
+  ]
+}

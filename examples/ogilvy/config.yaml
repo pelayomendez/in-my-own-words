@@ -1,0 +1,38 @@
+# Worked example. Read it; don't install it. See README.md in this folder.
+
+author:
+  name: David Ogilvy
+  publication: books, agency memos and copy
+  url: https://en.wikipedia.org/wiki/David_Ogilvy_(businessman)
+  feed: null
+  background: >-
+    Advertising copywriter and agency founder, 1948–1999. Wrote about how to
+    make advertising that sells, in a register borrowed from the memo rather
+    than the essay. Argues from measured results and names names.
+
+languages:
+  primary: en
+  also: []
+
+profile:
+  core: core-voice.md
+  lexicons:
+    en: lexicon.en.md
+
+scope:
+  applies_to:
+    - essay
+    - trade article
+    - internal memo
+    - talk
+  does_not_apply_to:
+    - fiction
+    - personal correspondence
+    - anything requiring hedged, consensus-seeking language
+
+targets:
+  words: [700, 2500]
+  offer_title: true          # declarative headings that state the finding
+  sign_off: false
+
+coexists_with: []
