@@ -1,6 +1,8 @@
 # sounds-like-me
 
-**An agent skill that writes long-form in your voice — because it learned it from your own published work, not from a description of it.**
+**AI that writes like you, because it's read you.**
+
+A skill you install into Claude Code, Cursor, Codex or any of the ~70 agents that support them. Point it at your blog: it reads your last few articles, works out how you actually write, and then writes new pieces in your voice, fixes drafts that came out sounding like a robot, and tells you when something doesn't sound like you.
 
 [pelayomendez.github.io/sounds-like-me](https://pelayomendez.github.io/sounds-like-me) · MIT
 
@@ -12,20 +14,20 @@ Then: *bootstrap my voice profile from https://your-blog.com/feed*
 
 ---
 
-## What it does
+## Four things it does
 
-- **Draft** — you give it ideas, notes or a mess; it returns a finished piece.
-- **Rewrite** — you give it a draft (yours, a colleague's, or something a model produced) and it puts it in your voice without touching your argument.
-- **Audit** — you give it a text and it tells you, with quotations, where it stops sounding like you. It doesn't rewrite.
-- **Refresh** — it reads new writing you point it at and updates the profile, so the voice tracks yours instead of freezing on the day you set it up.
+- **Write** — give it ideas, an outline or a mess of bullet points; it returns a finished piece. It keeps your ideas in the order you gave them.
+- **Rewrite** — hand it a draft (yours, a colleague's, or something an AI produced). Same points, same order, same facts; it only changes how it's written, and tells you what it touched.
+- **Check** — it quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them; that part stays yours.
+- **Keep up** — show it something new you've published and it picks up only what's changed, so the profile tracks you instead of freezing on the day you set it up.
 
-## Why not just a style prompt
+## Why telling an AI to "write like me" never works
 
-A style prompt is a description of how you'd like to sound. Ask anyone to describe their own writing and you get the writer they aspire to be: "clear, conversational, a bit witty". Every writer says this. It steers nothing.
+Ask any writer to describe their own style and you get the same three words: clear, conversational, a bit witty. It's what we'd all like to be true, and it tells an AI nothing.
 
-This works the other way round. It reads what you've actually published and records what you demonstrably do — the paragraph-length distribution, how sentences start, which word gets the italics, what your last line does, and the phrases that never appear anywhere in your corpus. Every trait carries a verbatim quotation, so you can argue with it.
+So this goes the other way round. It reads what you've published and writes down what you actually do — how long your paragraphs run, how your sentences start, which word you put in italics, how you end a piece. Every single thing it notices comes with a quote from your own writing, so you can look at it and say: no, that's not me, that was one article.
 
-The anti-tells turn out to matter as much as the traits. Knowing that an author has never once written "it's important to note" does more to keep output in voice than any positive instruction.
+The most useful part turned out to be the opposite list. Knowing that you have never once typed "it's important to note" keeps a draft sounding like you better than any instruction about what to write.
 
 ## See a real one first
 
