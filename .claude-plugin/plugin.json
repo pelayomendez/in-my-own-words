@@ -1,12 +1,12 @@
 {
-  "name": "sounds-like-me",
+  "name": "in-my-own-words",
   "version": "0.2.0",
   "description": "Draft, rewrite or audit long-form prose in your own voice, in any language, from a profile distilled from your published writing.",
   "author": {
     "name": "Pelayo Méndez",
     "url": "https://github.com/pelayomendez"
   },
-  "repository": "https://github.com/pelayomendez/sounds-like-me",
+  "repository": "https://github.com/pelayomendez/in-my-own-words",
   "license": "MIT",
   "keywords": [
     "writing",
@@ -18,7 +18,7 @@
     "bilingual"
   ],
   "skills": [
-    "./skills/sounds-like-me"
+    "./skills/in-my-own-words"
   ],
-  "homepage": "https://pelayomendez.github.io/sounds-like-me"
+  "homepage": "https://pelayomendez.github.io/in-my-own-words"
 }

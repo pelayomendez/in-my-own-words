@@ -1,24 +1,25 @@
-# sounds-like-me
+# in-my-own-words
 
 **AI that writes like you, because it's read you.**
 
 A skill you install into Claude Code, Cursor, Codex or any of the ~70 agents that support them. Point it at your blog: it reads your last few articles, works out how you actually write, and then writes new pieces in your voice, fixes drafts that came out sounding like a robot, and tells you when something doesn't sound like you.
 
-[pelayomendez.github.io/sounds-like-me](https://pelayomendez.github.io/sounds-like-me) · MIT
+[pelayomendez.github.io/in-my-own-words](https://pelayomendez.github.io/in-my-own-words) · MIT
 
 ```bash
-npx skills@latest add pelayomendez/sounds-like-me -g
+npx skills@latest add pelayomendez/in-my-own-words -g
 ```
 
 Then: *bootstrap my voice profile from https://your-blog.com/feed*
 
 ---
 
-## Four things it does
+## Five things it does
 
 - **Write** — give it ideas, an outline or a mess of bullet points; it returns a finished piece. It keeps your ideas in the order you gave them.
 - **Rewrite** — hand it a draft (yours, a colleague's, or something an AI produced). Same points, same order, same facts; it only changes how it's written, and tells you what it touched.
 - **Check** — it quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them; that part stays yours.
+- **Grill** — it interviews you, but never with "describe your style". It shows you two versions of your own sentence and asks which is more you, then reports where your answers and your writing disagree.
 - **Keep up** — show it something new you've published and it picks up only what's changed, so the profile tracks you instead of freezing on the day you set it up.
 
 ## Why telling an AI to "write like me" never works
@@ -29,6 +30,18 @@ So this goes the other way round. It reads what you've published and writes down
 
 The most useful part turned out to be the opposite list. Knowing that you have never once typed "it's important to note" keeps a draft sounding like you better than any instruction about what to write.
 
+## The part nobody else does
+
+The grill puts what you *say* about your writing next to what you *do*, and shows you the gap:
+
+> You said you keep things short. Your last five pieces average 1,400 words.
+>
+> You said you always cut adverbs in the final pass. There are 31 in the corpus, nine of them in the piece you named as your best.
+
+Your answers don't win those arguments — the corpus does. Stated preferences describe the writer you mean to be, and writing to intent instead of practice is the failure this whole thing exists to prevent. The one exception is audience and scope, which no amount of reading can tell you.
+
+Writing by *other people* that you admire is deliberately never collected. It's the obvious next feature and it would quietly wreck the profile: feed it in and the output drifts toward that writer, and you won't be able to say why the drafts feel slightly off.
+
 ## See a real one first
 
 [`examples/ogilvy/`](./examples/ogilvy) is a complete worked profile for David Ogilvy. The mechanics of this tool are easy; the thing that's hard to picture is *how specific a profile has to get* before it does any work. That folder is the answer.
@@ -37,7 +50,7 @@ The most useful part turned out to be the opposite list. Knowing that you have n
 
 The profile is split in two layers:
 
-- [`core-voice.md`](./skills/sounds-like-me/references/core-voice.md) — everything that survives translation. Shape, rhythm, argument moves, metaphor discipline, how a piece opens and lands. Almost none of it is about vocabulary.
+- [`core-voice.md`](./skills/in-my-own-words/references/core-voice.md) — everything that survives translation. Shape, rhythm, argument moves, metaphor discipline, how a piece opens and lands. Almost none of it is about vocabulary.
 - `lexicon.<lang>.md` — everything that doesn't. Words, punctuation habits, register, idiom, anti-tells.
 
 Ask for a piece in a language whose lexicon is still a stub and it applies the core, derives only what safely follows, and tells you it's doing that. It will not invent verbal tics in a language it has never seen you write.
@@ -45,7 +58,7 @@ Ask for a piece in a language whose lexicon is still a stub and it applies the c
 ## Install
 
 ```bash
-npx skills@latest add pelayomendez/sounds-like-me -g
+npx skills@latest add pelayomendez/in-my-own-words -g
 ```
 
 `-g` installs globally, into `~/.claude/skills/`. Works with Claude Code, Codex, Cursor, OpenCode and ~70 other agents.
@@ -53,8 +66,8 @@ npx skills@latest add pelayomendez/sounds-like-me -g
 Or as a Claude Code plugin:
 
 ```
-/plugin marketplace add pelayomendez/sounds-like-me
-/plugin install sounds-like-me@pelayomendez
+/plugin marketplace add pelayomendez/in-my-own-words
+/plugin install in-my-own-words@pelayomendez
 ```
 
 skills.sh copies the skill so you can edit it in place — which is what you want here, since the profile is meant to grow. The plugin keeps it as a read-only bundle you subscribe to.
@@ -80,7 +93,7 @@ does this sound like me?
 Drop writing into `sources/raw/` and ask the skill to read it. Or batch it:
 
 ```bash
-./skills/sounds-like-me/scripts/add-source.sh https://your-blog.com/feed
+./skills/in-my-own-words/scripts/add-source.sh https://your-blog.com/feed
 ```
 
 That only fetches text. The extraction happens in conversation, deliberately: deciding whether a difference is a new habit, a genre shift or a one-off is a judgement call, and a script that made it silently would rot the profile. Every accepted change appends a row to `sources/index.md`.

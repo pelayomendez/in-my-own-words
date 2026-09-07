@@ -1,16 +1,16 @@
 {
-  "name": "sounds-like-me",
+  "name": "in-my-own-words",
   "version": "0.2.0",
   "private": true,
   "description": "A forkable agent skill that drafts, rewrites and audits long-form prose in the configured author's voice, from a profile distilled from their published work.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pelayomendez/sounds-like-me"
+    "url": "https://github.com/pelayomendez/in-my-own-words"
   },
   "license": "MIT",
   "scripts": {
     "check": "./scripts/check.sh",
-    "add-source": "./skills/sounds-like-me/scripts/add-source.sh"
+    "add-source": "./skills/in-my-own-words/scripts/add-source.sh"
   },
-  "homepage": "https://pelayomendez.github.io/sounds-like-me"
+  "homepage": "https://pelayomendez.github.io/in-my-own-words"
 }

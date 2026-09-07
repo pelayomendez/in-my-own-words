@@ -21,7 +21,8 @@ languages:
   also: []                                 # add others; each needs its own lexicon
 
 profile:
-  core: references/core-voice.md
+  core: references/core-voice.md          # observed — from your published text. Outranks everything.
+  stated: references/stated.md            # what you said in the grill. Intent, not evidence.
   lexicons:
     en: references/lexicon.en.md
 

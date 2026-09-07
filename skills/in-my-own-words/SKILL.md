@@ -1,9 +1,9 @@
 ---
-name: sounds-like-me
-description: "Draft, rewrite or audit long-form prose so it sounds like the configured author, in any language, using a voice profile distilled from their own published work. Use when the user asks to write an essay, newsletter, Substack post, blog article, talk script or long-form LinkedIn piece; asks to make a draft sound like them; asks whether a text sounds like them or where it goes off-voice; or asks to update their voice profile from new writing samples. Not for chat replies, commit messages or short operational email."
+name: in-my-own-words
+description: "Draft, rewrite or audit long-form prose so it sounds like the configured author, in any language, using a voice profile distilled from their own published work. Use when the user asks to write an essay, newsletter, Substack post, blog article, talk script or long-form LinkedIn piece; asks to make a draft sound like them; asks whether a text sounds like them or where it goes off-voice; asks to update their voice profile from new writing samples; or asks to be interviewed or grilled about how they write. Not for chat replies, commit messages or short operational email."
 ---
 
-# sounds-like-me
+# in-my-own-words
 
 A voice is not a tone setting. It is a set of decisions the author makes over and over — how long a paragraph runs before it breaks, when a metaphor is allowed in, which word gets the italics, how the last line lands. This skill holds those decisions in a profile and applies them.
 
@@ -13,8 +13,9 @@ Long-form only. Short-message register belongs to whatever always-on writing gui
 
 1. Read `config.yaml` in this skill directory. It names the author, the publication, the languages and where the profile lives. If it is still the unedited template, run **Bootstrap** below instead of guessing.
 2. Work out the target language. For drafting and rewriting it is the language of the piece the user wants, taken from their request, not from the profile's primary language. For auditing there are two: the lexicon is chosen by the language of the **text under audit**, while the audit itself is written in the language the user is speaking to you in.
-3. Load `references/core-voice.md` (language-agnostic) **and** the lexicon for the target language. Both, always. The core carries the structure; the lexicon carries the surface.
-4. If the lexicon for that language is still a stub, say so in one line before delivering, and apply the core alone. Do not fake surface habits that have never been observed in that language.
+3. Load `references/core-voice.md` (language-agnostic) **and** the lexicon for the target language. Both, always. The core carries the structure; the lexicon carries the surface. Load `references/stated.md` too if it isn't empty.
+4. **Precedence, when sources disagree: the corpus wins.** `core-voice.md` and the lexicons come from text the author actually published. `stated.md` comes from what they told you about themselves, which describes the writer they mean to be. Writing to intent instead of practice is the exact failure this skill exists to prevent. The one exception is audience and scope, which the corpus cannot observe and where `stated.md` is the only evidence there is.
+5. If the lexicon for that language is still a stub, say so in one line before delivering, and apply the core alone. Do not fake surface habits that have never been observed in that language.
 
 ## Mode 1 — Draft
 
@@ -44,7 +45,19 @@ Work through `references/audit-rubric.md`, judging against `references/core-voic
 
 Separate what you can judge from what you can only flag. Voice is judgeable from the text. Whether a fact, quotation or anecdote is real is not — mark those **unverified** and list them for the author rather than passing or failing them.
 
-## Mode 4 — Refresh the profile
+## Mode 4 — The grill
+
+Triggered by "grill me", "interview me about my writing", "ask me some questions", or offered at the end of a bootstrap once the corpus profile exists.
+
+An interview that never asks the author to describe their own writing — that question is the reason this skill exists. Instead it uses forced choices built from their real sentences, and it collects only what the corpus **cannot** show: who they write for, which of their own pieces they disown, what they always cut in the last pass, what's deliberate rather than habit.
+
+Run it from `references/grill.md`. Read the corpus first; you cannot build the questions without real text.
+
+Answers go to `references/stated.md`, never straight into `core-voice.md` or a lexicon. Then produce the **conflict report** — every place the answers and the corpus disagree, presented together with evidence on both sides, and left for the author to rule on. That report is the point of the exercise. A grill that surfaces no conflicts had questions that were too easy.
+
+Writing by other people that the author admires is deliberately not collected anywhere in this skill. `grill.md` explains why.
+
+## Mode 5 — Refresh the profile
 
 Triggered by "learn from this", "add this to my profile", "this one is very me", or a new file appearing in `sources/`.
 
@@ -58,7 +71,9 @@ Traits go to the layer they belong to. Argument moves, paragraph rhythm, how sec
 
 Below three sources, say so: that is one article documented, not a voice. Offer to proceed anyway with the caveat recorded in `sources/index.md`.
 
-`examples/ogilvy/` at the repo root is a complete worked profile. Read it before writing the first one — it is the fastest way to calibrate how specific these files have to get.
+`examples/ogilvy/` at the repo root is a complete worked profile. Read it before writing the first one — it is the fastest way to calibrate how specific these files have to get. Note that it has no `stated.md`: you cannot interview a man who died in 1999, and the example is honest about the gap rather than filling it with plausible-sounding intent.
+
+Once the corpus profile exists and the user has accepted it, offer the grill (Mode 4) in one line. Not before — the questions are built from their own sentences, so there is nothing to ask until the text has been read.
 
 ## Rules that hold in every mode
 

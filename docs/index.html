@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>sounds-like-me — AI that writes like you</title>
+<title>in-my-own-words — AI that writes like you</title>
 <meta name="description" content="A skill you install into Claude Code, Cursor or Codex. Point it at your blog, it reads your last few articles, and then it writes, fixes and checks your drafts in your voice. Free and open source.">
-<link rel="canonical" href="https://pelayomendez.github.io/sounds-like-me/">
+<link rel="canonical" href="https://pelayomendez.github.io/in-my-own-words/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="sounds-like-me — AI that writes like you">
+<meta property="og:title" content="in-my-own-words — AI that writes like you">
 <meta property="og:description" content="Point it at your blog. It reads your last few articles and works out how you actually write — then writes, fixes and checks drafts in your voice.">
-<meta property="og:url" content="https://pelayomendez.github.io/sounds-like-me/">
+<meta property="og:url" content="https://pelayomendez.github.io/in-my-own-words/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
 <style>
@@ -143,12 +143,13 @@
 <body>
 
 <nav><div class="wrap">
-  <a class="brand" href="#top">sounds-like-me</a>
+  <a class="brand" href="#top">in-my-own-words</a>
   <div class="links">
     <a href="#demo">Demo</a>
     <a href="#why">Why</a>
+    <a href="#conflict">The grill</a>
     <a href="#does">What it does</a>
-    <a href="https://github.com/pelayomendez/sounds-like-me">GitHub</a>
+    <a href="https://github.com/pelayomendez/in-my-own-words">GitHub</a>
     <a class="btn" href="#install">Install</a>
   </div>
 </div></nav>
@@ -216,13 +217,31 @@
   <p class="lede">The most useful part turned out to be the opposite list. Knowing that you have never once typed "it's important to note" keeps a draft sounding like you better than any instruction about what to write.</p>
 </div></section>
 
+<section id="conflict"><div class="wrap">
+  <div class="two">
+    <div>
+      <h2>And then it tells you you're wrong</h2>
+      <p class="lede">It also interviews you — but never with "how would you describe your writing?" It puts two versions of your own sentence side by side and asks which is more you. Eight of those, plus a couple of questions the text can't answer: who's the reader in your head, which of your own pieces would you take down, what do you always cut at the end.</p>
+      <p class="lede">Then it lays your answers next to your actual writing and shows you where the two disagree. Your answers don't win those arguments — the text does. What you say describes the writer you mean to be, and writing to that is exactly the failure this thing exists to prevent.</p>
+      <p class="lede">It's also the most interesting thing anyone will tell you about your own writing this year.</p>
+    </div>
+    <div class="panel" style="border-radius:3px">
+      <span class="tag">The conflict report</span>
+      <p style="font-size:15px;line-height:1.65">You said you <strong>keep things short</strong>.<br><span style="color:var(--ink-2)">Your last five pieces average 1,400 words. The shortest is 1,100.</span></p>
+      <p style="font-size:15px;line-height:1.65">You said you <strong>always cut adverbs</strong> in the final pass.<br><span style="color:var(--ink-2)">There are 31 in the corpus. Nine of them are in the piece you named as your best.</span></p>
+      <p style="font-size:15px;line-height:1.65">You picked the version <strong>without the conjunction opening</strong> six times out of eight.<br><span style="color:var(--ink-2)">You start 40% of your paragraphs with "And" or "But".</span></p>
+    </div>
+  </div>
+</div></section>
+
 <section id="does"><div class="wrap">
-  <h2>Four things it does</h2>
-  <p class="lede">All four work off the same profile, so what it writes and what it corrects can never contradict each other.</p>
+  <h2>Five things it does</h2>
+  <p class="lede">All five work off the same profile, so what it writes and what it corrects can never contradict each other.</p>
   <div class="cards">
     <div class="card"><span class="k">Write</span><h3>From notes to finished piece</h3><p>Give it your ideas, an outline, or a mess of bullet points. It keeps your ideas in the order you gave them — quietly rearranging your argument into something more conventional is the most common way this goes wrong.</p></div>
     <div class="card"><span class="k">Rewrite</span><h3>Fix a draft that doesn't sound like you</h3><p>Yours, a colleague's, or something an AI produced. Same points, same order, same facts. It changes how it's written and tells you what it touched.</p></div>
     <div class="card"><span class="k">Check</span><h3>Point at what's off</h3><p>It reads a piece and quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them — that part stays yours.</p></div>
+    <div class="card"><span class="k">Grill</span><h3>It interviews you</h3><p>Not "describe your style" — it shows you two versions of your own sentence and asks which is more you. Then it tells you where your answers and your writing disagree.</p></div>
     <div class="card"><span class="k">Keep up</span><h3>It learns as you keep writing</h3><p>Show it something new you've published. It picks up only what's changed, shows you before saving anything, and keeps a note of what it learned and where from.</p></div>
   </div>
 </div></section>
@@ -233,7 +252,7 @@
       <h2>What it actually learns about you</h2>
       <p class="lede">Most attempts at this stop at "short sentences, friendly tone", which steers nothing. This is the level of detail it takes before an AI can genuinely sound like someone — and here's a piece of the Ogilvy profile so you can see it.</p>
       <p class="lede">Because every line comes from something the writer actually wrote, you can argue with it. A profile is a claim about you with the evidence attached.</p>
-      <a class="btn ghost" href="https://github.com/pelayomendez/sounds-like-me/tree/main/examples/ogilvy">Read the whole thing →</a>
+      <a class="btn ghost" href="https://github.com/pelayomendez/in-my-own-words/tree/main/examples/ogilvy">Read the whole thing →</a>
     </div>
     <div class="panel" style="border-radius:3px">
       <span class="tag">A page from the Ogilvy profile</span>
@@ -286,14 +305,14 @@
   </div>
 
   <div class="cmd" style="margin-bottom:10px">
-    <span class="p">$</span><span id="cmd-global">npx skills@latest add pelayomendez/sounds-like-me -g -a claude-code</span>
+    <span class="p">$</span><span id="cmd-global">npx skills@latest add pelayomendez/in-my-own-words -g -a claude-code</span>
     <button class="copy" data-src="cmd-global">Copy</button>
   </div>
   <p class="note" style="margin-bottom:26px">The <span class="mono">-g</span> makes it available everywhere. Drop it to install for one project only.</p>
 
   <h3 style="font-size:16px;margin:0 0 10px">Or as a Claude Code plugin</h3>
   <div class="cmd" style="margin-bottom:26px">
-    <span class="p">&gt;</span><span id="cmd-plugin">/plugin marketplace add pelayomendez/sounds-like-me</span>
+    <span class="p">&gt;</span><span id="cmd-plugin">/plugin marketplace add pelayomendez/in-my-own-words</span>
     <button class="copy" data-src="cmd-plugin">Copy</button>
   </div>
 
@@ -321,13 +340,13 @@
   <div class="final">
     <h2>Stop describing your voice. <em class="hl">Show it the receipts.</em></h2>
     <p>Free, open source, and nothing gets uploaded anywhere. If you fork it to keep your own profile backed up, make the fork private — a voice profile is a fairly complete recipe for impersonating you.</p>
-    <a class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)" href="https://github.com/pelayomendez/sounds-like-me">View on GitHub</a>
-    <div class="cmd"><span class="p">$</span><span id="cmd-final">npx skills@latest add pelayomendez/sounds-like-me -g</span><button class="copy" data-src="cmd-final">Copy</button></div>
+    <a class="btn" style="background:var(--paper);color:var(--ink);border-color:var(--paper)" href="https://github.com/pelayomendez/in-my-own-words">View on GitHub</a>
+    <div class="cmd"><span class="p">$</span><span id="cmd-final">npx skills@latest add pelayomendez/in-my-own-words -g</span><button class="copy" data-src="cmd-final">Copy</button></div>
   </div>
   <footer>
     <span>MIT</span><span>·</span>
-    <a href="https://github.com/pelayomendez/sounds-like-me">Source</a><span>·</span>
-    <a href="https://github.com/pelayomendez/sounds-like-me/issues">Issues</a><span>·</span>
+    <a href="https://github.com/pelayomendez/in-my-own-words">Source</a><span>·</span>
+    <a href="https://github.com/pelayomendez/in-my-own-words/issues">Issues</a><span>·</span>
     <a href="https://pelayomendez.substack.com">Built by Pelayo Méndez</a>
   </footer>
 </div></section>
@@ -349,7 +368,7 @@
       document.querySelectorAll('#agents .sw').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
       b.setAttribute('aria-pressed','true');
       document.getElementById('cmd-global').textContent =
-        'npx skills@latest add pelayomendez/sounds-like-me -g -a ' + b.dataset.a;
+        'npx skills@latest add pelayomendez/in-my-own-words -g -a ' + b.dataset.a;
     });
   });
 

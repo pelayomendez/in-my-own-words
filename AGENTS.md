@@ -1,6 +1,6 @@
 # Working in this repo
 
-One skill, `skills/sounds-like-me`, plus the profile it runs on.
+One skill, `skills/in-my-own-words`, plus the profile it runs on.
 
 Two kinds of file live here and they have opposite rules:
 
