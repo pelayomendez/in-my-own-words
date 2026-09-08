@@ -50,7 +50,11 @@
   .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn.ghost:hover{background:var(--paper-2);border-color:var(--ink-2)}
   .btn.lg{padding:15px 28px;font-size:16.5px;border-radius:3px}
-  nav .btn{padding:8px 15px;font-size:13.5px}
+  /* The nav CTA is deliberately ink, not accent: two identical red buttons on
+     the first screen split the click, and the translucent blurred nav renders
+     the same hex a shade brighter than the hero does. */
+  nav .links a.btn{background:var(--ink);border-color:var(--ink);padding:8px 15px;font-size:13.5px}
+  nav .links a.btn:hover{background:#000;border-color:#000}
   @media(max-width:760px){nav .links a:not(.btn){display:none}}
 
   header{padding:76px 0 56px;border-bottom:1px solid var(--line)}
