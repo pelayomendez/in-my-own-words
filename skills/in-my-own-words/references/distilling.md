@@ -17,6 +17,22 @@ Accepted: a URL, an RSS feed, a pasted text, a file dropped into `sources/`, a f
 1. Get the full text. For a Substack or blog, the RSS feed carries whole posts and is more reliable than scraping a client-rendered page. Truncated feed items need a direct fetch of the post.
 2. Save it under `sources/raw/` with a dated slug: `2026-07-05-codigos-secretos.md`. Keep it verbatim — the raw text is the evidence base for every future refresh.
 3. Note the language and whether the author considers it representative. A piece they dislike is still useful, but it should be marked as such rather than weighted the same.
+4. **Ask who wrote it.** Not as a formality — as the question that decides whether the source is evidence at all. `hand`, `assisted`, `drafted` or `unknown`; the levels are defined in `config.yaml`. Record it in `sources/index.md` before extracting anything.
+
+## Provenance
+
+A corpus is only evidence of a voice if the voice wrote it. Most people publishing today have model-assisted work in their feed, and a profile distilled from it learns the model's habits and files them under the author's name. The author then can't say why the drafts feel slightly wrong — they feel wrong because they are a good imitation of the wrong writer.
+
+How each level is weighted:
+
+- **`hand`** — full trust, both layers. If any hand-written sources exist, traits that contradict them lose.
+- **`assisted`** — the author supplied structure and argument, the model supplied sentences. Trust `core-voice.md` (shape, argument moves, how a piece opens and lands); treat the lexicon as unreliable. Sentence-level rhythm sits awkwardly between the two: attribute it only if hand-written sources agree.
+- **`drafted`** — low trust everywhere. Useful for what the author *accepted*, which is weak evidence of taste and no evidence of habit.
+- **`unknown`** — treat as `assisted` and say so.
+
+**The inversion worth knowing about.** A trait that appears *only* in assisted or drafted sources, and that the author rejects in a grill, is not their habit — it is the model's, in their mouth. Do not just delete it. Move it to the lexicon's **anti-tells**, because it is now a phrase that specifically must not come back. The contamination becomes the immune system.
+
+Say plainly, when a profile leans on assisted sources, how much of it does. A profile built on `unknown` provenance is a hypothesis, not a record.
 
 ## Extracting traits
 

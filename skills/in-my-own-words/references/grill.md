@@ -84,6 +84,21 @@ Do not resolve these. Present them and ask. Each one has three possible readings
 
 A grill that produces no conflicts was a badly built grill. Go back and make the forced choices harder.
 
+## When the answers say the corpus is wrong
+
+Sometimes an author rejects a sentence that came verbatim out of their own published work. The reflex is to file it as aspiration — they'd like to be more restrained than they are. Check something first.
+
+**Ask who wrote it.** If the source is `assisted` or `drafted`, they may be right and the corpus wrong: what they're rejecting is the model's habit, published under their name. They are not describing who they want to be; they are correcting the record.
+
+Two things separate the cases, and you cannot tell them apart from the interview alone:
+
+- **A direction.** Decontamination has one — the rejected traits are all model tics, and they all fail in the same way. Aspiration is scattered.
+- **A clean source.** Something written before the model, or without it. If the author's forced choices match their hand-written work, the corpus was contaminated. If they don't, it was aspiration. Ask for that source; it is the only thing that settles it.
+
+When it is contamination, the rejected traits move to the lexicon's **anti-tells** rather than being deleted, and the affected sources get their provenance recorded so the next refresh weights them properly.
+
+Beware the reverse error too. "A model helped me" is also a comfortable explanation for a habit someone simply doesn't like about themselves. If a trait shows up in hand-written sources as well, it is theirs, and the honest answer is to say so.
+
 ## What is deliberately not collected
 
 **Writing by other people that the author admires.** It is tempting — it's easy to gather and people enjoy talking about it — and it would quietly wreck the profile. Admired writing is a description of who someone would like to sound like. Feed it in and the output drifts toward that writer, the author can't tell you why the drafts feel slightly off, and the one thing this tool promises stops being true.

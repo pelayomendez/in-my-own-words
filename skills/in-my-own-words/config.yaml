@@ -26,6 +26,19 @@ profile:
   lexicons:
     en: references/lexicon.en.md
 
+# How much of your published work is actually yours. In 2026 this is the
+# assumption most voice tools still get wrong, and getting it wrong means
+# learning the model's tics and calling them yours.
+#
+#   hand      written without model assistance. Full trust.
+#   assisted  your structure and argument, model helped with the wording.
+#             Trust core-voice, distrust the lexicon.
+#   drafted   model shaped the structure too, you edited. Low trust throughout.
+#   unknown   default. Treated as assisted until you say otherwise.
+provenance:
+  default: unknown
+  # per-source overrides live in sources/index.md
+
 scope:
   applies_to:
     - essay

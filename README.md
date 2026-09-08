@@ -42,6 +42,14 @@ Your answers don't win those arguments — the corpus does. Stated preferences d
 
 Writing by *other people* that you admire is deliberately never collected. It's the obvious next feature and it would quietly wreck the profile: feed it in and the output drifts toward that writer, and you won't be able to say why the drafts feel slightly off.
 
+## It asks who actually wrote it
+
+Every voice tool assumes your published work is yours. In 2026 that assumption is broken for most people who publish, and it fails quietly: distil a profile from model-assisted writing and it learns the model's habits, files them under your name, and hands you drafts that feel subtly wrong for reasons you can't put your finger on.
+
+So each source carries a provenance — `hand`, `assisted`, `drafted` — and it changes what gets trusted. If you supplied the structure and a model supplied the sentences, the argument layer is still yours and the lexicon isn't; the profile is split along that exact line, so half of it survives.
+
+There's a nice inversion in it. A phrase that appears only in your model-assisted pieces, and that you reject when the grill puts it in front of you, isn't a habit you're dropping — it's the model's, in your mouth. It doesn't get deleted. It goes into your anti-tells, so it can't come back.
+
 ## See a real one first
 
 [`examples/ogilvy/`](./examples/ogilvy) is a complete worked profile for David Ogilvy. The mechanics of this tool are easy; the thing that's hard to picture is *how specific a profile has to get* before it does any work. That folder is the answer.

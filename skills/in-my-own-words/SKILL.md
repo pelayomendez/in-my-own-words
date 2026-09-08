@@ -14,7 +14,7 @@ Long-form only. Short-message register belongs to whatever always-on writing gui
 1. Read `config.yaml` in this skill directory. It names the author, the publication, the languages and where the profile lives. If it is still the unedited template, run **Bootstrap** below instead of guessing.
 2. Work out the target language. For drafting and rewriting it is the language of the piece the user wants, taken from their request, not from the profile's primary language. For auditing there are two: the lexicon is chosen by the language of the **text under audit**, while the audit itself is written in the language the user is speaking to you in.
 3. Load `references/core-voice.md` (language-agnostic) **and** the lexicon for the target language. Both, always. The core carries the structure; the lexicon carries the surface. Load `references/stated.md` too if it isn't empty.
-4. **Precedence, when sources disagree: the corpus wins.** `core-voice.md` and the lexicons come from text the author actually published. `stated.md` comes from what they told you about themselves, which describes the writer they mean to be. Writing to intent instead of practice is the exact failure this skill exists to prevent. The one exception is audience and scope, which the corpus cannot observe and where `stated.md` is the only evidence there is.
+4. **Precedence, when sources disagree: the corpus wins — if the corpus is theirs.** Check `sources/index.md` for provenance before leaning on it. A profile distilled from model-assisted writing is partly a profile of the model, and in that case a stated preference that contradicts it may be the author correcting the record rather than describing an aspiration. `references/distilling.md` sets out how each level is weighted. Where provenance is `hand`, `core-voice.md` and the lexicons come from text the author actually wrote. `stated.md` comes from what they told you about themselves, which describes the writer they mean to be. Writing to intent instead of practice is the exact failure this skill exists to prevent. The one exception is audience and scope, which the corpus cannot observe and where `stated.md` is the only evidence there is.
 5. If the lexicon for that language is still a stub, say so in one line before delivering, and apply the core alone. Do not fake surface habits that have never been observed in that language.
 
 ## Mode 1 — Draft
@@ -55,6 +55,8 @@ Run it from `references/grill.md`. Read the corpus first; you cannot build the q
 
 Answers go to `references/stated.md`, never straight into `core-voice.md` or a lexicon. Then produce the **conflict report** — every place the answers and the corpus disagree, presented together with evidence on both sides, and left for the author to rule on. That report is the point of the exercise. A grill that surfaces no conflicts had questions that were too easy.
 
+The grill is also how contamination gets found. When an author rejects a sentence that came out of their own published work, that is a signal about the source, not about their memory — check its provenance before recording it as an aspiration.
+
 Writing by other people that the author admires is deliberately not collected anywhere in this skill. `grill.md` explains why.
 
 ## Mode 5 — Refresh the profile
@@ -67,7 +69,7 @@ Traits go to the layer they belong to. Argument moves, paragraph rhythm, how sec
 
 ## Bootstrap (fresh fork)
 
-`config.yaml` still says `YOUR NAME`, or the profile files are still stubs. Do not ask the user to describe their own style — people describe the writer they want to be. Ask instead for three to five published pieces, an RSS feed, or a folder of drafts, then run `references/distilling.md` from scratch to generate `core-voice.md` and the first lexicon. Fill `config.yaml` from what you learn and from a short conversation about scope and language. Show the profile before saving it.
+`config.yaml` still says `YOUR NAME`, or the profile files are still stubs. Do not ask the user to describe their own style — people describe the writer they want to be. Ask instead for three to five published pieces, an RSS feed, or a folder of drafts — and ask, for each, whether a model helped write it. Ask it plainly and early; it is not an awkward question in 2026, and skipping it is how a profile ends up describing a model. then run `references/distilling.md` from scratch to generate `core-voice.md` and the first lexicon. Fill `config.yaml` from what you learn and from a short conversation about scope and language. Show the profile before saving it.
 
 Below three sources, say so: that is one article documented, not a voice. Offer to proceed anyway with the caveat recorded in `sources/index.md`.
 
