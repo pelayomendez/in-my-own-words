@@ -2,7 +2,7 @@
 
 **AI that writes like you, because it's read you.**
 
-A skill you install into Claude Code, Cursor, Codex or any of the ~70 agents that support them. Point it at your blog: it reads your last few articles, works out how you actually write, and then writes new pieces in your voice, fixes drafts that came out sounding like a robot, and tells you when something doesn't sound like you.
+A skill you install into Claude Code, Cursor, Codex or any of the ~70 agents that support them. Give it a few things you've already written — posts, a newsletter, a talk, internal docs, whatever exists. It works out how you actually write, then writes new pieces in your voice, fixes drafts that came out sounding like a robot, and tells you when something doesn't sound like you.
 
 [pelayomendez.github.io/in-my-own-words](https://pelayomendez.github.io/in-my-own-words) · MIT
 
@@ -10,7 +10,7 @@ A skill you install into Claude Code, Cursor, Codex or any of the ~70 agents tha
 npx skills@latest add pelayomendez/in-my-own-words -g
 ```
 
-Then: *bootstrap my voice profile from https://your-blog.com/feed*
+Then: *learn my writing voice from the files in ~/writing/*
 
 ---
 
@@ -82,10 +82,11 @@ skills.sh copies the skill so you can edit it in place — which is what you wan
 
 ## Set up your profile
 
-Point it at your writing and say so. Three to five pieces is the floor; below that you're documenting one article, not a voice.
+A folder, a feed, or a few pieces pasted in. Published or not — a talk script and a long internal doc carry a voice as well as a blog post does. Three to five is the floor; below that you're documenting one piece, not a voice.
 
 ```
-bootstrap my voice profile from https://your-blog.com/feed
+learn my writing voice from the files in ~/writing/
+learn my writing voice from https://your-site.com/feed
 ```
 
 It reads them, extracts the traits with evidence, shows you the profile, and only writes it once you've accepted. Then:
@@ -98,10 +99,11 @@ does this sound like me?
 
 ## Keeping it current
 
-Drop writing into `sources/raw/` and ask the skill to read it. Or batch it:
+Drop writing into `sources/raw/` and ask the skill to read it. Or batch it — the script takes a feed, a page or local files:
 
 ```bash
-./skills/in-my-own-words/scripts/add-source.sh https://your-blog.com/feed
+./skills/in-my-own-words/scripts/add-source.sh https://your-site.com/feed
+./skills/in-my-own-words/scripts/add-source.sh ~/writing/talk-2026.md ~/writing/rfc.md
 ```
 
 That only fetches text. The extraction happens in conversation, deliberately: deciding whether a difference is a new habit, a genre shift or a one-off is a judgement call, and a script that made it silently would rot the profile. Every accepted change appends a row to `sources/index.md`.
