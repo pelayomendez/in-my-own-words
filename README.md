@@ -18,7 +18,7 @@ Then: *learn my writing voice from the files in ~/writing/*
 
 - **Write** — give it ideas, an outline or a mess of bullet points; it returns a finished piece. It keeps your ideas in the order you gave them.
 - **Rewrite** — hand it a draft (yours, a colleague's, or something an AI produced). Same points, same order, same facts; it only changes how it's written, and tells you what it touched.
-- **Check** — it quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them; that part stays yours.
+- **Check** — it quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them; that part stays yours. Half of it is arithmetic rather than opinion: `measure.py` counts your paragraph lengths, your one-sentence-paragraph share, how often you open on a conjunction, and compares them to your own baseline.
 - **Grill** — it interviews you, but never with "describe your style". It shows you two versions of your own sentence and asks which is more you, then reports where your answers and your writing disagree.
 - **Keep up** — show it something new you've published and it picks up only what's changed, so the profile tracks you instead of freezing on the day you set it up.
 
@@ -29,6 +29,27 @@ Ask any writer to describe their own style and you get the same three words: cle
 So this goes the other way round. It reads what you've published and writes down what you actually do — how long your paragraphs run, how your sentences start, which word you put in italics, how you end a piece. Every single thing it notices comes with a quote from your own writing, so you can look at it and say: no, that's not me, that was one article.
 
 The most useful part turned out to be the opposite list. Knowing that you have never once typed "it's important to note" keeps a draft sounding like you better than any instruction about what to write.
+
+## It counts, where counting is possible
+
+Most of what people call voice is vibes, but a surprising amount of it is arithmetic. Your median paragraph is 115 words or it isn't. You open 6% of your sentences with a conjunction or you open 17%.
+
+```bash
+./skills/in-my-own-words/scripts/measure.py draft.md
+```
+
+```
+                                            this text   baseline
+  ──────────────────────────────────────────────────────────────
+  median words per paragraph                       90        115
+  one-sentence paragraphs %                       9.1          7
+  sentences opening on a conjunction %            7.0        5.9
+  short-sentence bursts per 1000 words            3.1        4.0
+```
+
+The baseline comes from your own corpus — `measure.py --baseline` builds it — and only from sources you wrote by hand. Build it from model-assisted writing and you have measured the model.
+
+This catches the failure that judgement misses in both directions: a text that reads fine but has drifted, and a text that reads odd but is well within your range. It also catches over-correction, which is what happens when an AI turns one of your habits into a tic — the first draft of an essay written against this profile opened 17% of its sentences with a conjunction. The real rate is 5.9%.
 
 ## The part nobody else does
 

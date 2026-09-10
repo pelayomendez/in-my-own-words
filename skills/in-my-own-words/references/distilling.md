@@ -52,6 +52,12 @@ Work through these dimensions and write down what you actually observe, with quo
 12. **Level of polish.** Do typos survive? Is the copy clean?
 13. **Anti-tells.** What never appears. This list does as much work as the positive traits.
 
+## Measure it, don't estimate it
+
+Rhythm is the one dimension people get wrong by eye, and it is also the one that most decides whether a draft sounds right. Run `../scripts/measure.py --baseline <hand sources>` and let it write `metrics.json`: paragraph and sentence length distributions, one-sentence-paragraph share, conjunction-opening rate, burst frequency.
+
+Two rules. Build the baseline **only from `hand` sources** — measuring model-assisted writing gives you the model's rhythm with the author's name on it. And when a measured number contradicts the prose you were about to write in `core-voice.md`, the number wins; that section exists to describe what the numbers mean, not to overrule them.
+
 ## Writing the update
 
 For each trait, decide:

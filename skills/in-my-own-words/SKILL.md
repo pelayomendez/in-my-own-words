@@ -41,7 +41,9 @@ The user hands you a draft — theirs, a colleague's, or something an AI produce
 
 The user wants to know where a text stops sounding like them. Do not rewrite it.
 
-Work through `references/audit-rubric.md`, judging against `references/core-voice.md` and the lexicon for the text's language — all three are already loaded from the steps above. Return a verdict per dimension with quoted evidence: the offending sentence, the trait it violates, and a one-line suggestion. End with the two or three fixes that would move the piece most. Quote, always — an audit without quotations is an opinion.
+**Run `scripts/measure.py <file>` first.** Half of what the rubric asks about is countable — paragraph length, one-sentence-paragraph share, how often a sentence opens on a conjunction, short-sentence bursts, forbidden phrases — and counting beats estimating in both directions: by eye you will flag a text that is fine and pass one that is a model's rhythm wearing the author's words. Paste its table into the audit and spend your judgement on what it cannot measure.
+
+Then work through `references/audit-rubric.md`, judging against `references/core-voice.md` and the lexicon for the text's language — all three are already loaded from the steps above. Return a verdict per dimension with quoted evidence: the offending sentence, the trait it violates, and a one-line suggestion. End with the two or three fixes that would move the piece most. Quote, always — an audit without quotations is an opinion.
 
 Separate what you can judge from what you can only flag. Voice is judgeable from the text. Whether a fact, quotation or anecdote is real is not — mark those **unverified** and list them for the author rather than passing or failing them.
 
@@ -64,6 +66,8 @@ Writing by other people that the author admires is deliberately not collected an
 Triggered by "learn from this", "add this to my profile", "this one is very me", or a new file appearing in `sources/`.
 
 Follow `references/distilling.md`. In short: ingest the source, extract only traits that are **new or that contradict** what the profile already records, show the user the proposed diff before writing it, then update the profile files and append a row to `sources/index.md`. Never rewrite a profile file wholesale from a single new source — profiles accumulate, they do not get replaced.
+
+After any refresh that adds `hand` sources, rebuild the baseline: `scripts/measure.py --baseline <sources>`. Never build it from assisted or unknown sources — a baseline measured off model-assisted writing measures the model.
 
 Traits go to the layer they belong to. Argument moves, paragraph rhythm, how sections open and close, what earns a metaphor → `core-voice.md`. Specific words, punctuation habits, register, idiom, the tics → the lexicon for that source's language.
 

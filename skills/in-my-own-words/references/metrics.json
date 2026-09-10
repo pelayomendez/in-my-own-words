@@ -1,0 +1,13 @@
+{
+  "_": "Your measured baseline. Build it, don't write it: measure.py --baseline over your hand-written corpus. Only sources whose provenance is `hand` belong in it — a baseline built from model-assisted writing measures the model.",
+  "language": "en",
+  "openers": ["And", "But", "Because"],
+  "burst": { "max_sentence_words": 8, "min_run": 3 },
+  "tolerance": 0.35,
+  "forbidden": [
+    "in a world where", "it's important to note", "it is important to note",
+    "delve", "landscape", "paradigm shift", "game-changer",
+    "unlock the potential", "in conclusion", "let's dive in",
+    "the future is being written", "firstly", "secondly", "not only"
+  ]
+}

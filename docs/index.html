@@ -153,6 +153,7 @@
     <a href="#demo">Demo</a>
     <a href="#why">Why</a>
     <a href="#conflict">The grill</a>
+    <a href="#measure">It counts</a>
     <a href="#whowrote">Who wrote it</a>
     <a href="#does">What it does</a>
     <a href="https://github.com/pelayomendez/in-my-own-words">GitHub</a>
@@ -253,9 +254,28 @@
   <div class="cards">
     <div class="card"><span class="k">Write</span><h3>From notes to finished piece</h3><p>Give it your ideas, an outline, or a mess of bullet points. It keeps your ideas in the order you gave them — quietly rearranging your argument into something more conventional is the most common way this goes wrong.</p></div>
     <div class="card"><span class="k">Rewrite</span><h3>Fix a draft that doesn't sound like you</h3><p>Yours, a colleague's, or something an AI produced. Same points, same order, same facts. It changes how it's written and tells you what it touched.</p></div>
-    <div class="card"><span class="k">Check</span><h3>Point at what's off</h3><p>It reads a piece and quotes the exact sentences that stopped sounding like you, and says why. It won't rewrite them — that part stays yours.</p></div>
+    <div class="card"><span class="k">Check</span><h3>Point at what's off</h3><p>It quotes the exact sentences that stopped sounding like you, and says why. Half of it is arithmetic, not opinion — it counts your paragraph lengths and your habits against your own baseline. It won't rewrite anything; that part stays yours.</p></div>
     <div class="card"><span class="k">Grill</span><h3>It interviews you</h3><p>Not "describe your style" — it shows you two versions of your own sentence and asks which is more you. Then it tells you where your answers and your writing disagree.</p></div>
     <div class="card"><span class="k">Keep up</span><h3>It learns as you keep writing</h3><p>Show it something new you've published. It picks up only what's changed, shows you before saving anything, and keeps a note of what it learned and where from.</p></div>
+  </div>
+</div></section>
+
+<section id="measure"><div class="wrap">
+  <div class="two">
+    <div>
+      <h2>Some of it is arithmetic, not taste</h2>
+      <p class="lede">Most of what people call voice is a judgement call. A surprising amount of it isn't. Your median paragraph is 115 words or it's 60. You open 6% of your sentences with a conjunction, or you open 17%. Those are facts about your writing, and nobody was counting them.</p>
+      <p class="lede">So it counts them, against a baseline measured from your own work. That catches the two things judgement misses: a draft that reads fine but has quietly drifted, and one that reads odd but is well inside your range.</p>
+      <p class="lede">It also catches over-correction — an AI handed a list of your habits will turn them into tics. The first draft written against this profile opened 17% of its sentences with a conjunction. The real rate was 5.9%. Nobody spots that by eye.</p>
+    </div>
+    <div class="panel mono" style="border-radius:3px;font-size:12.5px;line-height:1.85;color:var(--ink-2)">
+      <span class="tag" style="font-family:inherit">$ measure.py draft.md</span>
+      <span style="color:var(--ink-2)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this text&nbsp;&nbsp;baseline</span><br>
+      median words per paragraph&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong style="color:var(--ink)">90</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;115<br>
+      one-sentence paragraphs %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong style="color:var(--ink)">9.1</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7<br>
+      opens on a conjunction %&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong style="color:var(--ink)">7.0</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.9<br>
+      bursts per 1000 words&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong style="color:var(--ink)">3.1</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.0
+    </div>
   </div>
 </div></section>
 
